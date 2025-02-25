@@ -20,23 +20,12 @@ void draw() {
 
   background(bkg);
 
-  fill (red);
-  if (mouseX > 100 && mouseX < 300 && mouseY >100 && mouseY <200) {
-    stroke (white);
-  } else {
-    stroke (black);
-  }
-  rect(100, 100, 200, 100);
+  tactileRect(100, 100, 200, 100, red);
+  tactileRect(300, 300, 200, 100, yellow);
 
-  fill (blue);
-  if (dist (400, 150, mouseX, mouseY) <50) {
-
-    stroke (black);
-  } else {
-    stroke (white);
-    circle(400, 150, 100);
-  }
+  tactileCircle(400, 150, 100, blue);
 }
+
 
 //void mousePressed(){
 
@@ -53,10 +42,47 @@ void draw() {
 //}
 
 void mousePressed() {
-  if (mouseX > 100 && mouseX < 300 && mouseY > 100 && mouseY <200) {
+  if (MousetouchingRect(100, 100, 200, 100)) {
     bkg = red;
   }
-  if (dist(400, 150, mouseX, mouseY) < 50) {
+  if (MousetouchingCircle(400, 150, 100)) {
     bkg = blue;
+  }
+}
+
+boolean MousetouchingRect(int x, int y, int w, int h) {
+  if (mouseX > x && mouseX < x+w && mouseY >y && mouseY <y+h) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean MousetouchingCircle(int x, int y, int r) {
+  if (dist (x, y, mouseX, mouseY) <r) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+void tactileRect(int x, int y, int w, int h, color f) {
+  fill (f);
+  if (MousetouchingRect(x, y, w, h)) {
+    stroke (white);
+  } else {
+    stroke (black);
+  }
+  rect(x, y, w, h);
+}
+
+void tactileCircle(int x, int y, int r, color f) {
+  fill (f);
+  if (MousetouchingCircle(x, y, r)) {
+
+    stroke (black);
+  } else {
+    stroke (white);
+    circle(x, y, r);
   }
 }
