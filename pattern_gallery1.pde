@@ -29,8 +29,8 @@ void draw() {
   }
 
 
-  tactileRect(50, 500, 100, 50, red);    // Pattern 1 Button
-  tactileRect(200, 500, 100, 50, yellow); // Pattern 2 Button
+  tactileRect(50, 500, 100, 50, yellow);    // Pattern 1 Button
+  tactileRect(200, 500, 100, 50, red); // Pattern 2 Button
   tactileRect(350, 500, 100, 50, green);  // Pattern 3 Button
 }
 
@@ -88,11 +88,10 @@ void patternThree() {
   while (y < height - 100) {
     pushMatrix();
     if (y % 100 == 0) {
-      translate(50, 0); // Offset every other row
-    }
+      translate(50, 0); 
 
     for (int x = 0; x < width; x += w) {
-      tactileRect(x, y, w, h, (x % 100 == 0) ? green : orange);
+      tactileRect(x, y, w, h, (x % 100 == 0) ? green : green);
     }
 
     popMatrix();
