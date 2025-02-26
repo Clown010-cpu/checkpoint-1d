@@ -89,6 +89,7 @@ void patternThree() {
     pushMatrix();
     if (y % 100 == 0) {
       translate(50, 0); 
+    }
 
     for (int x = 0; x < width; x += w) {
       tactileRect(x, y, w, h, (x % 100 == 0) ? green : green);
