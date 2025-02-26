@@ -87,12 +87,12 @@ void patternThree() {
 
   while (y < height - 100) {
     pushMatrix();
-    if (y % 100 == 0) {
+    if (y == 100) {
       translate(50, 0); 
     }
 
     for (int x = 0; x < width; x += w) {
-      tactileRect(x, y, w, h, (x % 100 == 0) ? green : green);
+      tactileRect(x, y, w, h, (x == 100) ? green : green);
     }
 
     popMatrix();
